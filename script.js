@@ -1,6 +1,6 @@
 x_rocket = 235;
 y_rocket = 535;
-speed = 4;
+speed = 2;
 
 function preload(){
 rocket = loadImage("images/rocket.png");
@@ -36,19 +36,25 @@ function keyPressed(){
     console.log("ned");
 }
 
-h = document.getElementById("knap_h");
-m = document.getElementById("knap_m");
-l = document.getElementById("knap_l");
+ha = document.getElementById("knap_h");
+ma = document.getElementById("knap_m");
+la = document.getElementById("knap_l");
 
 function h(){
   speed = 6;
-  h.style.backgroundColor = "grey";
-  m.style.backgroundColor = "white";
-  l.style.backgroundColor = "white";
+  ha.style.backgroundColor = "grey";
+  ma.style.backgroundColor = "white";
+  la.style.backgroundColor = "white";
 }
 function m(){
   speed = 4;
+  ha.style.backgroundColor = "white";
+  ma.style.backgroundColor = "grey";
+  la.style.backgroundColor = "white";
 }
 function l(){
   speed = 2;
+  ha.style.backgroundColor = "white";
+  ma.style.backgroundColor = "white";
+  la.style.backgroundColor = "grey";
 }

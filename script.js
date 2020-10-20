@@ -30,31 +30,52 @@ if (keyIsDown(40) && y_rocket<540 || keyIsDown(83) && y_rocket<540){
 }
 
 function keyPressed(){
-    if(keyCode === 38 || keyCode === 87)
-    console.log("op");
-    else if(keyCode === 40 || keyCode === 83)
-    console.log("ned");
+    if(keyCode === 38 || keyCode === 87){
+    console.log("op");}
+    else if(keyCode === 40 || keyCode === 83){
+    console.log("ned");}
+
+    if(keyCode === 72){
+      if (speed === 2){
+        m()
+      }
+      else if (speed === 4){
+        h()
+      }
+      else if (speed === 6){
+        l()
+      }
+    
+    }
 }
 
 ha = document.getElementById("knap_h");
 ma = document.getElementById("knap_m");
 la = document.getElementById("knap_l");
 
-function h(){
-  speed = 6;
-  ha.style.backgroundColor = "grey";
-  ma.style.backgroundColor = "white";
-  la.style.backgroundColor = "white";
-}
-function m(){
-  speed = 4;
-  ha.style.backgroundColor = "white";
-  ma.style.backgroundColor = "grey";
-  la.style.backgroundColor = "white";
-}
 function l(){
   speed = 2;
   ha.style.backgroundColor = "white";
   ma.style.backgroundColor = "white";
   la.style.backgroundColor = "grey";
+  console.log("langsom");
 }
+
+function m(){
+  speed = 4;
+  ha.style.backgroundColor = "white";
+  ma.style.backgroundColor = "grey";
+  la.style.backgroundColor = "white";
+  console.log("medium");
+}
+
+function h(){
+  speed = 6;
+  ha.style.backgroundColor = "grey";
+  ma.style.backgroundColor = "white";
+  la.style.backgroundColor = "white";
+  console.log("hurtig");
+}
+
+
+

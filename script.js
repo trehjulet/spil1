@@ -1,6 +1,6 @@
 x_rocket = 235;
-y_rocket = 535;
-speed = 2;
+y_rocket = 520;
+speed = 4;
 
 function preload(){
 rocket = loadImage("images/rocket.png");
@@ -21,19 +21,20 @@ image(cloud, 20,30);
 image(cloud2, 45,40);
 image(cloud1, 370,30);
 image(rocket, x_rocket, y_rocket);
-if (keyIsDown(38) && y_rocket>0 || keyIsDown(87) && y_rocket>0){
-    y_rocket -= speed;
+if (keyIsDown(65) && x_rocket>0 || keyIsDown(37) && x_rocket>0){
+    x_rocket -= speed;
   }
-if (keyIsDown(40) && y_rocket<540 || keyIsDown(83) && y_rocket<540){
-    y_rocket += speed;
+if (keyIsDown(68) && x_rocket<470 || keyIsDown(39) && x_rocket<470){
+    x_rocket += speed;
   }
+
 }
 
 function keyPressed(){
-    if(keyCode === 38 || keyCode === 87){
-    console.log("op");}
-    else if(keyCode === 40 || keyCode === 83){
-    console.log("ned");}
+    if(keyCode === 65 || keyCode === 37){
+    console.log("venstre");}
+    else if(keyCode === 68 || keyCode === 39){
+    console.log("højre");}
 
     if(keyCode === 72){
       if (speed === 2){

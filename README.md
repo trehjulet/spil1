@@ -13,5 +13,6 @@
  #### - Vi har valgt space race
  
  ## Arbejdsfordeling:
-* Greg: Laver alias, og rumskibe. Får rumsibene til at flyve opad og nedad vha. piletaster. Laver boldene der kommer flyvende.
-* Kubi: Gør sådan så man "dør" når man bliver ramt og laver score tælleren.
+* Grzegorz: Laver alias, og rumskibe. Får rumsibene til at flyve opad og nedad vha. piletaster.
+* Hussein: Laver boldene der kommer flyvende. ( Hussein kunne ikke få det til at virke så Grzegorz tog over og lavede denne del)
+* Kubilay: Gør sådan så man "dør" når man bliver ramt og laver score tælleren.

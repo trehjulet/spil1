@@ -1,15 +1,13 @@
-//rakettens position og hastighed defineres på forhånd
-x_rocket = 235;
-y_rocket = 520;
-speed = 4;
+//rakettens hastighed defineres på forhånd.
+speed = 7;
 
-//highscore defineres
+//highscore defineres.
 highscore = 0;
 
-//array til boldene
+//array til boldene laves.
 var balls = [];
 
-//preload af billeder, så de er klar til visning inden resten af koden udføres/executes
+//preload af billeder, så de er klar til visning inden resten af koden udføres/executes.
 function preload(){
 rocket = loadImage("images/rocket.png");
 cloud = loadImage("images/cloud.png");  
@@ -17,14 +15,14 @@ cloud1 = loadImage("images/cloud_rev.png");
 cloud2 = loadImage("images/cloud_long.png");
 }
 
-//canvas laves og funktionen der laver nye bolde får en "forsnikelse" på mellem 0,35 og 0,7 sekund
+//canvas laves og rakettens første position defineres. Funktionen der laver nye bolde får en "forsnikelse" på 0,1 sekund.
 function setup(){
-  createCanvas(500,600);
-
-  var interval = setInterval(newBall, random(250, 700));
+  x_rocket = displayWidth/2;
+  y_rocket = displayHeight-300;
+  var interval = setInterval(newBall, 100);
 }
 
-//funktionen der laver nye bolde og definerer str. udfra hvor mange bolde der findes i forvejen (jo flere bolde, jo større bolde begynder der at komme)
+//funktionen der laver nye bolde og definerer str. udfra hvor mange bolde der findes i forvejen (jo flere bolde, jo større bolde begynder der at komme).
 function newBall(){
 
 if (balls.length < 20){
@@ -32,54 +30,59 @@ if (balls.length < 20){
   ball_max = 40;
 }
 
-else if (balls.length >= 20 && balls.length < 40){
-  ball_min = 20;
+else if (balls.length >= 40 && balls.length < 60){
+  ball_min = 30;
   ball_max = 50;
 }
 
-else if (balls.length >= 40 && balls.length < 60){
-  ball_min = 30;
-  ball_max = 60;
-}
-
-else if (balls.length >= 60 && balls.length < 80){
+else if (balls.length >= 60 && balls.length < 100){
   ball_min = 30;
   ball_max = 70;
 }
 
-else if (balls.length >= 60 && balls.length < 100){
+else if (balls.length >= 100 && balls.length < 150){
   ball_min = 40;
   ball_max = 80;
 }
 
-else{
+else if (balls.length >= 150 && balls.length < 250){
   ball_min = 50;
+  ball_max = 90;
+}
+
+else if (balls.length >= 250 && balls.length <500){
+  ball_min = 80;
   ball_max = 100;
 }
 
-  balls.push(new Ball(random (10,490), 0, random(ball_min, ball_max)));
+else{
+  ball_min = 100;
+  ball_max = 150;
+}
+
+  balls.push(new Ball(random (10,displayWidth-10), -20, random(ball_min, ball_max)));
 }
 
 function draw(){
 
-//baggrund og raket bliver "tegnet"
+//baggrund og raket bliver "tegnet".
 clear();
-createCanvas(500,600);
+createCanvas(displayWidth,displayHeight);
 background("lightblue");
 image(cloud, 20,30);
 image(cloud2, 45,40);
-image(cloud1, 370,30);
-image(rocket, x_rocket, y_rocket);
+image(cloud1, displayWidth - 200,30);
+image(rocket, x_rocket , y_rocket);
 
-// højre og venstre piltast og "A" og "D" bevæger raketten
+// højre og venstre piltast og "A" og "D" bevæger raketten.
 if (keyIsDown(65) && x_rocket>0 || keyIsDown(37) && x_rocket>0){
     x_rocket -= speed;
   }
-if (keyIsDown(68) && x_rocket<470 || keyIsDown(39) && x_rocket<470){
+if (keyIsDown(68) && x_rocket<(displayWidth-30) || keyIsDown(39) && x_rocket<(displayWidth-30)){
     x_rocket += speed;
   }
 
-// alle boldene vises
+// alle boldene vises.
 for (var i = 0; i < balls.length; i++) {
   balls[i].fall();
   balls[i].display();
@@ -96,7 +99,7 @@ function keyPressed(){
     }
 */
 
-// "Ball" defineres med farve og dennes placering/fald opdateres
+// "Ball" defineres med farve og dennes placering/fald opdateres.
 class Ball {
   constructor(x_position, y_position, diameter) {
     this.x = x_position;

@@ -1,21 +1,4 @@
 body{
-    margin-left:10px;
-    margin-top:10px;
-}
-
-#knap_h, #knap_m, #knap_l{
-    height:100px;
-    width: 164px;
-    font-size: large;
-    margin-bottom: 5px;
-}
-
-#knap_h{
-    background-color:white;
-}
-#knap_m{
-    background-color:grey;
-}
-#knap_l{
-    background-color:white;
+    margin-left:0px;
+    margin-top:00px;
 }

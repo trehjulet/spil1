@@ -15,4 +15,4 @@
  ## Arbejdsfordeling:
 * Grzegorz: Laver alias, og rumskibe. Får rumsibene til at flyve opad og nedad vha. piletaster.
 * Hussein: Laver boldene der kommer flyvende. ( Hussein kunne ikke få det til at virke så Grzegorz tog over og lavede denne del)
-* Kubilay: Gør sådan så man "dør" når man bliver ramt og laver score tælleren.
+* Kubilay: Gør sådan så man "dør" når man bliver ramt og laver score tælleren. ( Kubilay kunne ikke få det til at virke så Grzegorz tog over og lavede denne del)

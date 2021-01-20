@@ -55,12 +55,14 @@ else if (balls.length >= 250 && balls.length <500){
   ball_max = 100;
 }
 
-else{
+else if (balls.length >= 500 && balls.length <550){
   ball_min = 100;
   ball_max = 150;
+  balls.splice(0,50)
 }
 
   balls.push(new Ball(random (10,displayWidth-10), -20, random(ball_min, ball_max)));
+  highscore +=1;
 }
 
 function draw(){
@@ -87,6 +89,7 @@ for (var i = 0; i < balls.length; i++) {
   balls[i].fall();
   balls[i].display();
 }
+checkHit();
 
 }
 
@@ -106,6 +109,7 @@ class Ball {
     this.y = y_position;
     this.d = diameter;
     this.speed = 5;
+		this.position = new p5.Vector(this.x, this.y);
 
     this.display = function () {
       fill(226,88,34);
@@ -119,5 +123,10 @@ class Ball {
   }
 }
 
+function checkHit(){
+  if(false){
+    noLoop();
+  }
+  };
 
 // Husk "noLoop();" til at stoppe spillet

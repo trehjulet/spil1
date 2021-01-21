@@ -1,6 +1,8 @@
 //rakettens hastighed defineres på forhånd.
 speed = 7;
-
+var distance;
+var h;
+var g;
 //highscore defineres.
 highscore = 0;
 
@@ -124,9 +126,20 @@ class Ball {
 }
 
 function checkHit(){
+  var h = Ball.x - x_rocket;
+  var g = Ball.y - y_rocket;
+  var distance = sqrt(h*h + g*g)-(Ball.d/2+y_rocket/2);
+
+  if(distance <= 0) {
+    console.log("khara!!");
+  }
+}
+
+  /*
   if(false){
     noLoop();
   }
   };
+  */
 
 // Husk "noLoop();" til at stoppe spillet

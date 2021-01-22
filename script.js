@@ -12,9 +12,7 @@ var balls = [];
 //preload af billeder, så de er klar til visning inden resten af koden udføres/executes.
 function preload(){
 rocket = loadImage("images/rocket.png");
-cloud = loadImage("images/cloud.png");  
-cloud1 = loadImage("images/cloud_rev.png");
-cloud2 = loadImage("images/cloud_long.png");
+bg = loadImage("images/bg.jpg")
 }
 
 //canvas laves og rakettens første position defineres. Funktionen der laver nye bolde får en "forsnikelse" på 0,1 sekund.
@@ -27,7 +25,7 @@ function setup(){
 //funktionen der laver nye bolde og definerer str. udfra hvor mange bolde der findes i forvejen (jo flere bolde, jo større bolde begynder der at komme).
 function newBall(){
 
-if (balls.length < 20){
+if (balls.length < 40){
   ball_min = 20;
   ball_max = 40;
 }
@@ -54,7 +52,7 @@ else if (balls.length >= 150 && balls.length < 250){
 
 else if (balls.length >= 250 && balls.length <500){
   ball_min = 80;
-  ball_max = 100;
+  ball_max = 120;
 }
 
 else if (balls.length >= 500 && balls.length <550){
@@ -72,10 +70,7 @@ function draw(){
 //baggrund og raket bliver "tegnet".
 clear();
 createCanvas(displayWidth,displayHeight);
-background("lightblue");
-image(cloud, 20,30);
-image(cloud2, 45,40);
-image(cloud1, displayWidth - 200,30);
+background(bg);
 image(rocket, x_rocket , y_rocket);
 
 // højre og venstre piltast og "A" og "D" bevæger raketten.
@@ -91,7 +86,6 @@ for (var i = 0; i < balls.length; i++) {
   balls[i].fall();
   balls[i].display();
 }
-checkHit();
 
 }
 
@@ -125,21 +119,10 @@ class Ball {
   }
 }
 
-function checkHit(){
-  var h = Ball.x - x_rocket;
-  var g = Ball.y - y_rocket;
-  var distance = sqrt(h*h + g*g)-(Ball.d/2+y_rocket/2);
-
-  if(distance <= 0) {
-    console.log("khara!!");
-  }
-}
-
-  /*
+/*
   if(false){
     noLoop();
-  }
   };
-  */
+*/
 
 // Husk "noLoop();" til at stoppe spillet

@@ -89,15 +89,6 @@ for (var i = 0; i < balls.length; i++) {
 
 }
 
-/* brugt til at fastsætte de forskellige keyCodes (ikke relavant)
-function keyPressed(){
-    if(keyCode === 65 || keyCode === 37){
-    console.log("venstre");}
-    else if(keyCode === 68 || keyCode === 39){
-    console.log("højre");}
-    }
-*/
-
 // "Ball" defineres med farve og dennes placering/fald opdateres.
 class Ball {
   constructor(x_position, y_position, diameter) {
@@ -126,3 +117,12 @@ class Ball {
 */
 
 // Husk "noLoop();" til at stoppe spillet
+
+/* brugt til at fastsætte de forskellige keyCodes (ikke relavant)
+function keyPressed(){
+    if(keyCode === 65 || keyCode === 37){
+    console.log("venstre");}
+    else if(keyCode === 68 || keyCode === 39){
+    console.log("højre");}
+    }
+*/

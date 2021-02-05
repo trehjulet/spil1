@@ -71,7 +71,9 @@ function draw(){
 clear();
 createCanvas(displayWidth,displayHeight);
 background(bg);
+ellipse(x_rocket+15, y_rocket+30, 30, 60)
 image(rocket, x_rocket , y_rocket);
+
 
 // højre og venstre piltast og "A" og "D" bevæger raketten.
 if (keyIsDown(65) && x_rocket>0 || keyIsDown(37) && x_rocket>0){
@@ -86,6 +88,8 @@ for (var i = 0; i < balls.length; i++) {
   balls[i].fall();
   balls[i].display();
 }
+
+
 
 }
 

@@ -3,22 +3,31 @@ speed = 7;
 var distance;
 var h;
 var g;
-//highscore defineres.
-highscore = 0;
+
+//hvis der ikke findes en gemt highscore endnu, bliver den lavet nu
+if(! localStorage.getItem(a)){
+  var a;
+  localStorage.setItem(a, 0)
+}
+
+//highscore og score defineres.
+highscore = localStorage.getItem(a);
+score = 0;
 
 //array til boldene laves.
 var balls = [];
 
+
 //preload af billeder, så de er klar til visning inden resten af koden udføres/executes.
 function preload(){
-rocket = loadImage("images/rocket.png");
-bg = loadImage("images/bg.jpg")
+  rocket = loadImage("images/rocket.png");
+  bg = loadImage("images/bg.jpg")
 }
 
 //canvas laves og rakettens første position defineres. Funktionen der laver nye bolde får en "forsnikelse" på 0,1 sekund.
 function setup(){
-  x_rocket = displayWidth/2;
-  y_rocket = displayHeight-300;
+  x_rocket = displayWidth/2-15;
+  y_rocket = displayHeight-250;
   var interval = setInterval(newBall, 100);
 }
 
@@ -62,38 +71,47 @@ else if (balls.length >= 170 && balls.length <200){
 }
 
   balls.push(new Ball(random (10,displayWidth-10), -20, random(ball_min, ball_max)));
-  highscore +=1;
+  score +=1;
 }
 
 function draw(){
 
-//baggrund og raket bliver "tegnet".
-clear();
-createCanvas(displayWidth,displayHeight);
-background(bg);
-image(rocket, x_rocket , y_rocket);
-ellipse(x_rocket+30,y_rocket+35,3,3)
+  //baggrund og raket bliver "tegnet".
+  clear();
+  createCanvas(displayWidth,displayHeight);
+  background(bg);
+  image(rocket, x_rocket , y_rocket);
+  ellipse(x_rocket+30,y_rocket+35,3,3)
+  text("Nuværende score: " + score,5,15);
+  text("Din highscore: " + localStorage.getItem(a),5,30);
 
 
-// højre og venstre piltast og "A" og "D" bevæger raketten.
-if (keyIsDown(65) && x_rocket>0 || keyIsDown(37) && x_rocket>0){
+  // højre og venstre piltast og "A" og "D" bevæger raketten.
+  if (keyIsDown(65) && x_rocket>0 || keyIsDown(37) && x_rocket>0){
     x_rocket -= speed;
   }
-if (keyIsDown(68) && x_rocket<(displayWidth-30) || keyIsDown(39) && x_rocket<(displayWidth-30)){
+  if (keyIsDown(68) && x_rocket<(displayWidth-30) || keyIsDown(39) && x_rocket<(displayWidth-30)){
     x_rocket += speed;
   }
 
-// alle boldene vises.
-for (var i = 0; i < balls.length; i++) {
-  balls[i].fall();
-  balls[i].display();
-}
+  // alle boldene vises.
+  for (var i = 0; i < balls.length; i++) {
+    balls[i].fall();
+    balls[i].display();
+  }
 
-//der tjekkes om distancen fra rakettens top, eller en af siderne til en bolds midtpunkt er mindre end boldens diameter, med andre ord bliver der tjekket for en coliision af de to objekter
-for (i in balls){
-  if (dist(x_rocket+15, y_rocket, balls[i].x, balls[i].y) < balls[i].d/2 || dist(x_rocket, y_rocket+35, balls[i].x, balls[i].y) < balls[i].d/2 || dist(x_rocket+30, y_rocket+35, balls[i].x, balls[i].y) < balls[i].d/2)
-  noLoop();
-}
+  //der tjekkes om distancen fra rakettens top, eller en af siderne til en bolds midtpunkt er mindre end boldens diameter, med andre ord bliver der tjekket for en coliision af de to objekter
+  for (i in balls){
+    if (dist(x_rocket+15, y_rocket, balls[i].x, balls[i].y) < balls[i].d/2 || dist(x_rocket, y_rocket+35, balls[i].x, balls[i].y) < balls[i].d/2 || dist(x_rocket+30, y_rocket+35, balls[i].x, balls[i].y) < balls[i].d/2){
+      gameOver();
+    }
+  }
+
+  //highscore opdateres hvis score er større
+  if (score> localStorage.getItem(a)){
+    localStorage.setItem(a,score)
+  };
+
 }
 
 // "Ball" defineres med farve og dennes placering/fald opdateres.
@@ -114,6 +132,12 @@ class Ball {
       this.y = this.y + this.speed;
     };
   }
+}
+
+function gameOver(){
+  noLoop();
+  window.alert("Din raket blev ramt af en meteor:(" + "\r\n" + "\r\n" + "Du scorede " + score + " point" + "\r\n" + "Din highscore er " + localStorage.getItem(a) + "\r\n" + "\r\n" + 'Tryk enter for at prøve igen')
+  location.reload();
 }
 
 /*

@@ -25,40 +25,40 @@ function setup(){
 //funktionen der laver nye bolde og definerer str. udfra hvor mange bolde der findes i forvejen (jo flere bolde, jo større bolde begynder der at komme).
 function newBall(){
 
-if (balls.length < 40){
+if (balls.length < 20){
   ball_min = 20;
   ball_max = 40;
 }
 
-else if (balls.length >= 40 && balls.length < 60){
+else if (balls.length >= 20 && balls.length < 40){
   ball_min = 30;
   ball_max = 50;
 }
 
-else if (balls.length >= 60 && balls.length < 100){
+else if (balls.length >= 40 && balls.length < 80){
   ball_min = 30;
   ball_max = 70;
 }
 
-else if (balls.length >= 100 && balls.length < 150){
+else if (balls.length >= 80 && balls.length < 110){
   ball_min = 40;
   ball_max = 80;
 }
 
-else if (balls.length >= 150 && balls.length < 250){
+else if (balls.length >= 110 && balls.length < 150){
   ball_min = 50;
   ball_max = 90;
 }
 
-else if (balls.length >= 250 && balls.length <500){
+else if (balls.length >= 150 && balls.length <170){
   ball_min = 80;
   ball_max = 120;
 }
 
-else if (balls.length >= 500 && balls.length <550){
+else if (balls.length >= 170 && balls.length <200){
   ball_min = 100;
   ball_max = 150;
-  balls.splice(0,50)
+  balls.splice(0,20)
 }
 
   balls.push(new Ball(random (10,displayWidth-10), -20, random(ball_min, ball_max)));
@@ -71,8 +71,8 @@ function draw(){
 clear();
 createCanvas(displayWidth,displayHeight);
 background(bg);
-ellipse(x_rocket+15, y_rocket+30, 30, 60)
 image(rocket, x_rocket , y_rocket);
+ellipse(x_rocket+30,y_rocket+35,3,3)
 
 
 // højre og venstre piltast og "A" og "D" bevæger raketten.
@@ -89,8 +89,11 @@ for (var i = 0; i < balls.length; i++) {
   balls[i].display();
 }
 
-
-
+//der tjekkes om distancen fra rakettens top, eller en af siderne til en bolds midtpunkt er mindre end boldens diameter, med andre ord bliver der tjekket for en coliision af de to objekter
+for (i in balls){
+  if (dist(x_rocket+15, y_rocket, balls[i].x, balls[i].y) < balls[i].d/2 || dist(x_rocket, y_rocket+35, balls[i].x, balls[i].y) < balls[i].d/2 || dist(x_rocket+30, y_rocket+35, balls[i].x, balls[i].y) < balls[i].d/2)
+  noLoop();
+}
 }
 
 // "Ball" defineres med farve og dennes placering/fald opdateres.
@@ -100,7 +103,6 @@ class Ball {
     this.y = y_position;
     this.d = diameter;
     this.speed = 5;
-		this.position = new p5.Vector(this.x, this.y);
 
     this.display = function () {
       fill(226,88,34);

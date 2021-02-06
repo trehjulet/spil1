@@ -22,6 +22,7 @@ var balls = [];
 function preload(){
   rocket = loadImage("images/rocket.png");
   bg = loadImage("images/bg.jpg")
+  hit_sound = loadSound('sounds/hit.mp3');
 }
 
 //canvas laves og rakettens første position defineres. Funktionen der laver nye bolde får en "forsnikelse" på 0,1 sekund.
@@ -136,7 +137,8 @@ class Ball {
 
 function gameOver(){
   noLoop();
-  window.alert("Din raket blev ramt af en meteor:(" + "\r\n" + "\r\n" + "Du scorede " + score + " point" + "\r\n" + "Din highscore er " + localStorage.getItem(a) + "\r\n" + "\r\n" + 'Tryk enter for at prøve igen')
+  hit_sound.play(0,1,1,0.5);
+  window.alert("Din raket blev ramt af en meteor:(" + "\r\n" + "\r\n" + "Du scorede " + score + " point" + "\r\n" + "Din highscore er " + localStorage.getItem(a) + "\r\n" + "\r\n" + 'Tryk enter for at prøve igen');
   location.reload();
 }
 

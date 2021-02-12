@@ -21,7 +21,7 @@ var balls = [];
 //preload af billeder, så de er klar til visning inden resten af koden udføres/executes.
 function preload(){
   rocket = loadImage("images/rocket.png");
-  bg = loadImage("images/bg.jpg")
+  bg = loadImage("images/bg3.jpeg")
   hit_sound = loadSound('sounds/hit.mp3');
 }
 

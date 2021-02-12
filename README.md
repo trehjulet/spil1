@@ -1,4 +1,4 @@
-# Spil
+# Spilprojektet
 
 ## Ideer
  * Et spil hvor man får en bold til at "hoppe" til højre og venstre
@@ -6,13 +6,13 @@
  * Huske ord/sætninger spil
  * Hop og undgå forhindringer
  * Pong
- * Space race
- * Space invaders
+ * Space Race
+ * Space Invaders
  * Snake
  
- #### - Vi har valgt space race
+ #### - Vi har valgt at lave vores version af Space Race
  
- ## Hvordan masn spiller
+ ## Hvordan man spiller
  Bevæg raketten til højre og venstre ved brug af piletasterne eller "A"- og "D"-tasterne. Undgå at blive ramt af de orange bolde/meteorer.
  Når ramt, dør spilleren, og score og highscore vises.
  
